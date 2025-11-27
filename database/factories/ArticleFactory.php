@@ -19,7 +19,7 @@ class ArticleFactory extends Factory
     public function definition(): array
     {
         // se guarda el titulo en una variable para reutilizarlo
-        $title = $this->faker->unique()->realText(55);
+        $title = $this->faker->unique()->realText(maxNbChars: 55);
         // se retorna el array con los datos del articulo
         return [
             'title' => $title,
@@ -28,8 +28,8 @@ class ArticleFactory extends Factory
             'image' => 'articles'.$this->faker->image('public/storage/articles',640,480, null, false),
             'body' => $this->faker->text(2000),
             'status' => $this->faker->boolean(),
-            'user_id' => User::All()->random()->id,
-            'category_id' => Category::All()->random()->id,
+            'user_id' => User::all()->random()->id,
+            'category_id' => Category::all()->random()->id,
         ];
     }
 }
