@@ -21,7 +21,7 @@ class CategoryFactory extends Factory
         return [
             'name' => $name,
             'slug' => Str::slug($name),
-            'image' => 'categories/'.$this->faker->image('public/storage/categories',640,480, null, false),
+            'image' => 'categories'.$this->faker->image('public/storage/categories',640,480, null, false),
             'is_featured' => $this->faker->boolean(),
             'status' => $this->faker->boolean(),
         ];
