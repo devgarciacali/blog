@@ -39,7 +39,7 @@ class ArticleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
         $request->merge([
             'user_id' => Auth::user()->id,
