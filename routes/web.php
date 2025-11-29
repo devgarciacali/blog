@@ -5,6 +5,9 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ProfileController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,11 +46,24 @@ Route::resource('categories', CategoryController::class)
         ->except('show')
         ->names('categories');
 
+//Comentarios
+Route::resource('comments', CommentController::class)
+        ->only('index', 'destroy')
+        ->names('comments');
 
+// perfiles 
+Route::resource('profiles', ProfileController::class)
+        ->only('edit', 'update')
+        ->names('profiles');
+        
 //Ver articulor
 Route::get('article/{article}', [ArticleController::class, 'show'])->name('articles.show');
 
 // ver articulos por categoria
 Route::get('categorys/{category}', [CategoryController::class, 'detail'])->name('categories.detail');
+
+// guardar comentario
+Route::get('comment', [CommentController::class, 'store'])->name('comments.store');
+
 
 Auth::routes();
