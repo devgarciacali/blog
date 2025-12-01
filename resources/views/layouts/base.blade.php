@@ -7,8 +7,8 @@
     <meta charset="UTF-8">
     <link rel="icon" href="{{ asset('img/icono.ico') }}">
 
-    <!-- Estilos de bootstrap -->
-    <link href="{{ mix('css/app.css') }}"  rel="stylesheet">
+    <!-- Vite: CSS & JS -->
+    @vite(['resources/sass/app.scss','resources/js/app.js'])
 
     <!-- Estilos css generales -->
     <link href="{{ asset('css/base/css/general.css') }}" rel="stylesheet">
@@ -36,8 +36,6 @@
         @include('layouts.footer')
     </div>
     @yield('scripts')
-    <!-- Scripts de bootstrap -->
-    <script src="{{ mix('js/app.js') }}"></script>
 </body>
 
 </html>
