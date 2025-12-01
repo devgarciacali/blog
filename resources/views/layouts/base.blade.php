@@ -17,24 +17,27 @@
 
     <!-- Estilos cambiantes -->
 
+    @yield('styles')
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title></title>
+    <title>@yield('title')</title>
 </head>
 
 <body>
 
     <div class="content">
         <!-- Incluir menú -->
-
+        @include('layouts.menu')
         <section class="section">
-           
+           @yield('content')
         </section>
 
         <!-- Incluir footer -->
+        @include('layouts.footer')
     </div>
-
+    @yield('scripts')
     <!-- Scripts de bootstrap -->
+    <script src="{{ mix('js/app.js') }}"></script>
 </body>
 
 </html>
