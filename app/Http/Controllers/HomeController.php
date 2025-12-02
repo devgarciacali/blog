@@ -31,24 +31,21 @@ class HomeController extends Controller
         ->orderBy('id', 'desc')
         ->simplePaginate(10);
 
-        // Obtener las categorias con estado publico(1) y destadadas (1)
-        $navbar = Category::where([
-            ['status', '1'],
-            ['is_featured', '1'],
-        ])->paginate(3);
+        // Obtener las categorias con estado publico(1)
+        $navbar = Category::where('status', '0')
+        ->paginate(3);
 
         return view('home.index', compact('articles', 'navbar'));
     }
     // todas las categorias
     public function all()
     {
-        $categories = Category::where('status', '1')
+        $categories = Category::where('status', '0')
         ->simplePaginate(20);
 
-        $navbar = Category::where([
-            ['status', '1'],
-            ['is_featured', '1'],
-        ])->paginate(3);
+        // Obtener las categorias con estado publico(1)
+        $navbar = Category::where('status', '0')
+        ->paginate(3);
 
         return view('home.all-categories', compact('categories', 'navbar'));
     }

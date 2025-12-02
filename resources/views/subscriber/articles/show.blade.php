@@ -52,4 +52,6 @@
             <p class="fs-5">{{ session('success-error') }}</p>
         </div>
     @endif
+
+    @include('subscriber.comments.show')
 @endsection

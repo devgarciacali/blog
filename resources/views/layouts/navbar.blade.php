@@ -7,8 +7,8 @@
 
         @foreach ($navbar as $category)
         {{-- se evitan los ataques XSS --}}
-            <li class="nav-item {!! (Request::path()) == 'category/'.$category->slug ? 'active' : '' !!}">
-                <a href="{{ route('categories.detail', $category->slug) }}">{{ $category->name }}</a>
+            <li class="nav-item {{ Request::is('categories/'.$category->slug) ? 'active' : '' }}">
+                <a href="{{ route('subscriber.categories.detail', $category->slug) }}">{{ $category->name }}</a>
             </li>
         @endforeach
 
