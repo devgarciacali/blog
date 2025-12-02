@@ -93,7 +93,6 @@ http://127.0.0.1:8000
 /resources/views
 /routes/web.php
 /public
-/miniatura/miniatura.jpeg   ← Imagen usada para la vista previa
 ```
 
 ---
