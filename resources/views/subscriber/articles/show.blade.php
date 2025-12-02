@@ -7,41 +7,42 @@
 
 @section('content')
 
-<div class="content-post">
+    <div class="content-post">
 
-    <div class="post-title line">
-        <h2 class="fw-bold">{{ $article->title }}</h2>
+        <div class="post-title line">
+            <h2 class="fw-bold">{{ $article->title }}</h2>
+        </div>
+
+        <div class="post-introduction line">
+            <p>{{ $article->introduction }}</p>
+        </div>
+
+        <div class="post-author line">
+            <img src="{{ $article->user->profile->photo ? asset('storage/' . $article->user->profile->photo) : asset('img/user-default.png') }}"
+                class="img-author">
+
+            <span>Autor:
+                <a href="#">{{ $article->user->full_name }}</a>
+            </span>
+        </div>
+
+        <hr>
+
+        <div class="post-image">
+            <img src="{{ asset('storage/' . $article->image) }}" alt="imagen" class="post-image-img">
+        </div>
+
+        <div class="post-body line">{!! $article->body !!}</div>
+        <hr>
     </div>
 
-    <div class="post-introduction line">
-        <p>{{ $article->introduction }}</p>
+    <div class="text-primary">
+        <h2>Comentarios</h2>
     </div>
 
-    <div class="post-author line">
-        <img src="{{ $article->user->profile->photo ? asset('storage/' . $article->user->profile->photo) : asset('img/user-default.png') }}" class="img-author">
+    <p class="alert-post">Para comentar debe iniciar sesión</p>
 
-        <span>Autor:
-            <a href="#">{{ $article->user->full_name }}</a>
-        </span>
+    <div class="text-danger text-center">
+        <p class="fs-5"></p>
     </div>
-
-    <hr>
-
-    <div class="post-image">
-        <img src="{{ asset('storage/' . $article->image) }}" alt="imagen" class="post-image-img">
-    </div>
-
-    <div class="post-body line">{!! $article->body !!}</div>
-    <hr>
-</div>
-
-<div class="text-primary">
-    <h2>Comentarios</h2>
-</div>
-
-<p class="alert-post">Para comentar debe iniciar sesión</p>
-
-<div class="text-danger text-center">
-    <p class="fs-5"></p>
-</div>
 @endsection
