@@ -58,14 +58,14 @@ class CommentController extends Controller
             Comment::create([
                 'value' => $request->value,
                 'description' => $request->description,
-                'user' => Auth::user()->id,
+                'user_id' => Auth::user()->id,
                 'article_id' => $request->article_id,
             ]);
             return redirect()->action([ArticleController::class, 'show'], ['article' => $artcle->slug]);
         } else {
             // si ya existe o el articulo no esta publico, redirigir con mensaje de error
             return redirect()->action([ArticleController::class, 'show'], ['article' => $artcle->slug])
-                ->with('sucess-error', 'Ya has comentado este articulo o el articulo no esta publico');
+                ->with('success-error', 'Ya has comentado este articulo o el articulo no esta publico');
         }
     }
 

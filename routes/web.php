@@ -60,7 +60,7 @@ Route::get('article/{article}', [ArticleController::class, 'show'])->name('artic
 Route::get('categorys/{category}', [CategoryController::class, 'detail'])->name('categories.detail');
 
 // guardar comentario
-Route::get('comment', [CommentController::class, 'store'])->name('comments.store');
+Route::post('comment', [CommentController::class, 'store'])->name('comments.store');
 
 
 Auth::routes();
