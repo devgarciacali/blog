@@ -8,7 +8,7 @@
 
 @section('content')
 
-    @include('layouts.navbar')
+@include('layouts.navbar')
 
     <div class="slogan">
         <div class="column1">

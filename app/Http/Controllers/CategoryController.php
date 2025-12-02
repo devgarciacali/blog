@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Category;
 use App\Http\Requests\CategoryRequest;
-use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\File;
 use App\Models\Article;
+use App\Models\Category;
+// use the base App controller (provides AuthorizesRequests)
+use Illuminate\Support\Facades\File;
+
 class CategoryController extends Controller
 {
     /**
@@ -34,7 +34,7 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Category $request)
+    public function store(CategoryRequest $request)
     {
 
         $category = $request->all();
@@ -99,7 +99,7 @@ class CategoryController extends Controller
     //Filtrar articulos por categoria
     public function detail(Category $category)
     {
-        $this->authorize('published',$category);
+        $this->authorize('published', $category);
         $articles = Article::where([
             ['category_id', $category->id],
             ['status', '1']
@@ -107,7 +107,7 @@ class CategoryController extends Controller
             ->orderBy('id', 'desc')
             ->simplePaginate(5);
 
-        $navbar = Category::where('status', '0')
+        $navbar = Category::where('status', '1')
             ->paginate(3);
 
         return view('subscriber.categories.detail', compact('articles', 'category', 'navbar'));

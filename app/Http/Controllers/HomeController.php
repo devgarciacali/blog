@@ -32,7 +32,7 @@ class HomeController extends Controller
         ->simplePaginate(10);
 
         // Obtener las categorias con estado publico(1)
-        $navbar = Category::where('status', '0')
+        $navbar = Category::where('status', '1')
         ->paginate(3);
 
         return view('home.index', compact('articles', 'navbar'));
@@ -40,11 +40,11 @@ class HomeController extends Controller
     // todas las categorias
     public function all()
     {
-        $categories = Category::where('status', '0')
+        $categories = Category::where('status', '1')
         ->simplePaginate(20);
 
         // Obtener las categorias con estado publico(1)
-        $navbar = Category::where('status', '0')
+        $navbar = Category::where('status', '1')
         ->paginate(3);
 
         return view('home.all-categories', compact('categories', 'navbar'));

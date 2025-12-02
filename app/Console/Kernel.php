@@ -24,4 +24,11 @@ class Kernel extends ConsoleKernel
 
         require base_path('routes/console.php');
     }
+
+    /**
+     * Register custom Artisan commands.
+     */
+    protected $commands = [
+        \App\Console\Commands\GenerateCategoryPlaceholders::class,
+    ];
 }
