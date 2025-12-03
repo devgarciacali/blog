@@ -1,5 +1,7 @@
 <?php
 // se deben llamar a los controladores 
+
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
@@ -24,6 +26,9 @@ use App\Http\Controllers\ProfileController;
 // Principal
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::get('/all', [HomeController::class, 'all'])->name('home.all');
+
+//Administrador
+Route::get('admin/', [AdminController::class, 'index'])->name('admin.index');
 
 // Articulos
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
@@ -52,6 +57,7 @@ Route::resource('comments', CommentController::class)
 Route::resource('profiles', ProfileController::class)
         ->only('edit', 'update')
         ->names('profiles');
+
         
 //Ver articulor
 Route::get('article/{article}', [ArticleController::class, 'show'])->name('articles.show');
