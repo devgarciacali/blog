@@ -3,11 +3,13 @@
 @section('title', 'Panel de Administracion')
 
 @section('content_header')
-    <h1>Dashboard</h1>
+    <h1>Binevenidos Al Panel de Administracion</h1>
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
+    <p>Hola! {{ Auth::user()->full_name }} desde aqui podras administrar tus articulos
+        categorias, y comentarios
+    </p>
 @stop
 
 @section('css')
