@@ -3,13 +3,14 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Article;
+use App\Models\Comment;
+use App\Models\Profile;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\HasApiTokens;
-use App\Models\Profile;
-use App\Models\Article;
-use App\Models\Comment;
 
 class User extends Authenticatable
 {
@@ -69,5 +70,12 @@ class User extends Authenticatable
     public function comments(){
         return $this->hasMany(Comment::class);
     }
+
+    // por si se ocupa mostrar las foto
+
+    // public function adminlte_image(){
+    //     return asset('storage/' . Auth::user()->profile->photo);
+        
+    // }
 
 }

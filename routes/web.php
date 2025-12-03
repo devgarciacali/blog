@@ -30,6 +30,24 @@ Route::get('/all', [HomeController::class, 'all'])->name('home.all');
 //Administrador
 Route::get('admin/', [AdminController::class, 'index'])->name('admin.index');
 
+// Rutas del admin
+Route::namespace('App\Http\Controllers')->prefix('admin')->group(function () {
+        // Articulos
+        Route::resource('articles', 'ArticleController')
+                                ->except('show')
+                                ->names('articles');
+
+        // Categorias
+       Route::resource('categories', 'CategoryController')
+                                ->except('show')
+                                ->names('categories');
+
+        //Comentarios
+       Route::resource('comments', 'CommentController')
+                                ->only('index', 'destroy')
+                                ->names('comments');
+});
+
 // Articulos
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
 Route::get('/articles/create', [ArticleController::class, 'create'])->name('articles.create');
@@ -58,7 +76,7 @@ Route::resource('profiles', ProfileController::class)
         ->only('edit', 'update')
         ->names('profiles');
 
-        
+
 //Ver articulor
 Route::get('article/{article}', [ArticleController::class, 'show'])->name('articles.show');
 
