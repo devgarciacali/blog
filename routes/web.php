@@ -79,6 +79,8 @@ Route::resource('profiles', ProfileController::class)
 
 //Ver articulor
 Route::get('article/{article}', [ArticleController::class, 'show'])->name('articles.show');
+//ver categorias
+Route::get('categorys', [CategoryController::class, 'index'])->name('categories.show');
 
 // ver articulos por categoria
 Route::get('categorys/{category}', [CategoryController::class, 'detail'])->name('categories.detail');

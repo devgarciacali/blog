@@ -24,7 +24,8 @@ class CommentController extends Controller
                 'comments.value',
                 'comments.description',
                 'articles.title',
-                'users.full_name'
+                'users.full_name',
+                'comments.created_at'
             )
             ->where('articles.id', '=', Auth::user()->id)
             ->orderBy('articles.id', 'desc')
@@ -58,6 +59,7 @@ class CommentController extends Controller
             Comment::create([
                 'value' => $request->value,
                 'description' => $request->description,
+                'created_at' => date('Y-m-d H:i:s'),
                 'user_id' => Auth::user()->id,
                 'article_id' => $request->article_id,
             ]);

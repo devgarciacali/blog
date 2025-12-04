@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Panel de administración')
+@section('title', 'Panel De Administración')
 
 @section('content_header')
 <h2>Administra tus categorías</h2>
@@ -25,19 +25,21 @@
             </thead>
 
             <tbody>
-                
+              @foreach ($categories as $category)
+                  
+              
                 <tr>
-                    <td></td>
+                    <td>{{ $category->name }}</td>
                     <td>
                         <input type="checkbox" name="status" id="status" class="form-check-input ml-3"
                             disabled>
                     </td>
                     <td>
                         <input type="checkbox" name="is_featured" id="is_featured" class="form-check-input ml-4"
-                            disabled>
+                        {{ $category->is_featured ? 'checked="checked"' : '' }}    
+                        disabled>
                     </td>
-
-
+                    <td width="2px"><a href="{{ route('categories.show', $category->slug) }}" class="btn btn-primary btn-sm mb-2">Mostrar</a></td>
                     <td width="10px"><a href="#"
                             class="btn btn-primary btn-sm mb-2">Editar</a></td>
                    
@@ -48,11 +50,12 @@
                     </td>
 
                 </tr>
+               @endforeach
             </tbody>
         </table>
-
+        
         <div class="text-center mt-3">
-            
+            {{ $categories->links() }}
         </div>
     </div>
 </div>

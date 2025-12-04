@@ -16,18 +16,21 @@
                     <th>Título del artículo</th>
                     <th>Comentario</th>
                     <th>Usuario</th>
+                    <th>Fecha</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
 
             <tbody>
-              
+              @foreach ($comments as $comment)
+                  
+              @endforeach
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-
-                    
+                    <td>{{ $comment->title }}</td>
+                    <td>{{ $comment->description }}</td>
+                    {{-- fecha de publicación --}}
+                    <td>{{ Auth::user()->full_name }}</td>
+                    <td>{{ $comment->created_at }}</td>
                     <td width="10px">
                         <form action="#" method="POST">
                             <input type="submit" value="Eliminar" class="btn btn-danger btn-sm">

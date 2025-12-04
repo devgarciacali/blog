@@ -44,9 +44,7 @@
                         </td>
                     </tr>
                 @endforeach
-            </tbody>
-        </table>
-        <div class="text-center mt-3">
+
             {{ $articles->links() }}
         </div>
     </div>
